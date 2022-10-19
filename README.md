@@ -2,7 +2,9 @@
 
 Samples for spring cloud alibaba. This project contains several sub-projects, each of which is an example of integration with other projects. such as eureka,gateway,openfeign,hystrix,nacos,sentinel,seata...
 
-<img src="doc/Nacos_Logo.png" width="50%" syt height="50%" />
+<img src="https://github.com/alibaba/nacos/blob/develop/doc/Nacos_Logo.png" width="50%" syt height="50%" />
+
+
 ## Nacos: Dynamic  *Na*ming and *Co*nfiguration *S*ervice
 
 Nacos (official site: [nacos.io](https://nacos.io)) is an easy-to-use platform designed for dynamic service discovery and configuration and service management. It helps you to build cloud native applications and microservices platform easily.
@@ -27,11 +29,16 @@ Nacos provides four major functions.
 
 
 <img src="https://user-images.githubusercontent.com/9434884/43697219-3cb4ef3a-9975-11e8-9a9c-73f4f537442d.png" alt="Sentinel Logo" width="50%">
+
+
 ## Sentinel: The Sentinel of Your Microservices
 
 As distributed systems become increasingly popular, the reliability between services is becoming more important than ever before.
 Sentinel takes "flow" as breakthrough point, and works on multiple fields including **flow control**,
 **traffic shaping**, **circuit breaking** and **system adaptive protection**, to guarantee reliability and resilience for microservices.
+
+
 <img src="https://github.com/seata/seata-samples/blob/master/doc/img/seata.png"  height="100" width="426">
+
 # seata
 A distributed transaction solution with high performance and ease of use for microservices architecture.
