@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.foresight.springcloud</groupId>
+  <artifactId>foresight-boot-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>FORESIGHT BOOT ${project.version}</name>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.3</version>
+    <relativePath />
+  </parent>
+  <modules>
+    <module>cloud-api-commons</module>
+    <module>cloud-provider-payment8001</module>
+    <module>cloud-provider-payment8002</module>
+    <module>cloud-provider-hystrix-payment8004</module>
+    <module>cloud-consumer-order80</module>
+    <module>cloud-eureka-server7001</module>
+    <module>cloud-eureka-server7002</module>
+    <module>cloud-consumer-feign-order80</module>
+    <module>cloud-gateway-gateway9527</module>
+    <module>cloud-configer-center3344</module>
+    <module>cloudalibaba-provider-payment9001</module>
+    <module>cloudalibaba-nacos-config7003</module>
+    <module>cloudalibaba-consumer-feign-order80</module>
+    <module>alibaba-seata-orderservice</module>
+    <module>alibaba-seata-stockservice</module>
+    <module>alibaba-seata-accountservice</module>
+  </modules>
+
+  <properties>
+    <!-- ????? -->
+    <spring.cloud-version>2021.0.1</spring.cloud-version>
+    <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+    <!-- <alibaba.nacos.version>2.0.4</alibaba.nacos.version> -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- ????????? -->
+    <postgresql.version>42.2.25</postgresql.version>
+    <ojdbc6.version>11.2.0.3</ojdbc6.version>
+    <sqljdbc4.version>4.0</sqljdbc4.version>
+    <mysql.version>8.0.27</mysql.version>
+    <hutool.version>5.3.8</hutool.version>
+    <!-- ??��? -->
+    <mybatis-plus.version>3.5.1</mybatis-plus.version>
+    <dynamic-datasource-spring-boot-starter.version>3.2.0</dynamic-datasource-spring-boot-starter.version>
+    <junit.version>5.8.2</junit.version>
+    <log4j.version>2.17.0</log4j.version>
+    <lombok.version>1.16.18</lombok.version>
+    <mybatis.spring.boot.version>2.2.2</mybatis.spring.boot.version>
+    <fastjson.version>1.2.75</fastjson.version>
+    <pegdown.version>1.6.0</pegdown.version>
+    <druid.version>1.2.13</druid.version>
+  </properties>
+  <dependencies>
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <!-- json -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>${fastjson.version}</version>
+    </dependency>
+    <!-- markdown -->
+    <dependency>
+      <groupId>org.pegdown</groupId>
+      <artifactId>pegdown</artifactId>
+      <version>${pegdown.version}</version>
+    </dependency>
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- spring-cloud-alibaba -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis.spring.boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <optional>true</optional>
+      </dependency>
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <!-- ???? -->
+  <profiles>
+    <!-- ???? -->
+    <profile>
+      <id>dev</id>
+      <activation>
+        <!--??????????-->
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <!--???????-->
+        <profile.name>dev</profile.name>
+        <!--Nacos??????-->
+        <config.server-addr>http://eureka-server7001.com:7001/eureka,http://eureka-server7002.com:7002/eureka</config.server-addr>
+      </properties>
+    </profile>
+    <!-- ???? -->
+    <profile>
+      <id>test</id>
+      <properties>
+        <!--???????-->
+        <profile.name>test</profile.name>
+        <!--Nacos??????-->
+        <config.server-addr>http://eureka-server7001.com:7001/eureka,http://eureka-server7002.com:7002/eureka</config.server-addr>
+      </properties>
+    </profile>
+    <!-- ???? -->
+    <profile>
+      <id>prod</id>
+      <properties>
+        <!--???????-->
+        <profile.name>prod</profile.name>
+        <!--Nacos??????-->
+        <config.server-addr>http://eureka-server7001.com:7001/eureka,http://eureka-server7002.com:7002/eureka</config.server-addr>
+      </properties>
+    </profile>
+  </profiles>
+</project>

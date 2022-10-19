@@ -1,0 +1,30 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-payment-hystrix-service
+  # datasource:
+  #   type: com.alibaba.druid.pool.DruidDataSource
+  #   url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+  #   username: test
+  #   password: test123456
+  #   driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #单机
+      defaultZone: http://eureka-server7001.com:7001/eureka/
+      #集群
+      #defaultZone: @config.server-addr@
+  instance:
+    instance-id: paymenthystrix8004
+    prefer-ip-address: true
+    # #心跳间隔时间
+    # lease-renewal-interval-in-seconds: 1
+    # #服务器在收到最后一次心跳后等待时间，超时删除服务
+    # lease-expiration-duration-in-seconds: 5
+

@@ -1,0 +1,9 @@
+server:
+  port: 7003
+
+# spring:
+  # application:
+  #   name: cloudalibaba-config-service
+  # profiles:
+  #   active: dev
+
