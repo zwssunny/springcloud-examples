@@ -38,3 +38,4 @@ seata:
       namespace: ""
       username: "nacos"
       password: "nacos"
+      data-id: seataServer.properties
